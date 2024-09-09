@@ -1,0 +1,28 @@
+@keyframes fade-out {
+  from {opacity: 1;}
+  to {opacity: 0;}   
+}
+@keyframes glide1 {
+  from {right: -50vw;}
+  to {right: 150vw;}
+}
+@keyframes big {
+  from {scale: 1;}
+  to {scale: 3;}
+}
+@keyframes bigger {
+  from {scale: 3;}
+  to {scale: 6;}
+}
+@keyframes biggest {
+  from {scale: 6;}
+  to {scale: 9;}
+}
+@keyframes small {
+  from {scale: 9; opacity: 1;}
+  to {scale: 1; opacity: 0;}
+}
+
+.display-none {
+  display: none;
+}
