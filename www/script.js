@@ -5,10 +5,27 @@ function randomFromAr(ar) {
     return ar[ranNum];
 }
 
+function getNextPhrase(word, talk) {
+    const endSelWrd = talk.indexOf(word) + word.length + 3;     // endOfSelectedWord + 3
+    const endOfNextPhrase = [
+        talk.indexOf(".", endSelWrd),
+        talk.indexOf(",", endSelWrd),
+        talk.indexOf("?", endSelWrd),
+        talk.indexOf("and", endSelWrd),
+        talk.indexOf("or", endSelWrd),
+        talk.indexOf("but", endSelWrd),
+        talk.indexOf("because", endSelWrd),
+        talk.indexOf("", endSelWrd),
+        talk.length
+    ]
+}
+
 function respond(talk) {
     talk = talk.toLowerCase();
+    talk = talk.replace(/'/g, "");
     const prepResp = preparedResponse(talk);
-    if (prepResp) return prepResp;                                      // if preparedResponse is not null, preparedResponse
+    if (prepResp) return prepResp;                      // if preparedResponse is not null, preparedResponse
+
 }
 
 function preparedResponse(talk) {
