@@ -7,16 +7,17 @@ function randomFromAr(ar) {
 
 function respond(talk) {
     talk = talk.toLowerCase();
-    preparedResponse(talk);
+    const prepResp = preparedResponse(talk);
+    if (prepResp) return prepResp;                                      // if preparedResponse is not null, preparedResponse
 }
 
 function preparedResponse(talk) {
-    const talkAr = talk.split(/[.,:;?!]/);                              // split talk into seperate sentences
-
-    for (let i = 0; i < talkAr.length; i++) {                           
-        const responseIndex = preparedResponses.indexOf(talkAr[i]);
-        if (responseIndex > -1) {                                       //check if any of the sentences are in prepared responses
-            
+    const talkAr = talk.split(/[.,:;?!]/);                                  // split talk into seperate sentences
+    for (let i = 0; i < talkAr.length; i++) {                               // for each 'sentence' (broken up by any of .,:;?!)
+        const responseIndex = preparedResponsesTalk.indexOf(talkAr[i]);     // search for and get index of prepared response (pre-written response)
+        if (responseIndex > -1) {                                           // check if [i] prepared responses exist
+            return randomFromAr(preparedResponse[responseIndex].responses)  // return a random prepared response to what the user said
         }
     }
+    return null
 }
