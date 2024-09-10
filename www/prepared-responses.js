@@ -6,6 +6,10 @@ const preparedResponses = [
             "Shut up?",
         ]
     },
+    {
+        talk: "",
+        responses: []
+    }
 
 ];
 
