@@ -1,6 +1,6 @@
 const keywordResponses = [
     {
-        kw: "i am sorry",
+        kw: "i be sorry",
         responses: ["Yeah, you better be sorry", "I'm sorry too (YOU'RE NOT NORMAL)"],
         priority: 60
     },
@@ -15,11 +15,44 @@ const keywordResponses = [
         priority: 0
     },
     {
-        kw: "you be angry",
-        responses: ["BARK BARK BARK BARK", "Rat in a cage despite I'm still ratty the cage"],
+        kw: "i be angry",
+        responses: ["eek! Angry why???"],
         priority: 60
     },
+    {
+        kw: "you be angry",
+        responses: ["BARK BARK BARK BARK", "Rat in a cage despite I'm still ratty the cage", "Despite all my cage I am still just a rat in a rage"],
+        priority: 60
+    },
+    {
+        kw: "hello",
+        responses: ["Hi"],        
+        priority: 20
+    },
+    {
+        kw: "love you",
+        responses: ["Would you still love me if I was a worm?"],        
+        priority: 50
+    },
+    {
+        kw: "name be",
+        responses: ["Okay. My name is Berryl."],
+        priority: 0,
+        //fun: function() {localStorage.setItem("name")}
+    },
+    {
+        kw: "my name be",
+        responses: ["Hi ###, I'm Berryl."],
+        priority: 0,
+        //fun: function() {localStorage.setItem("name")}
+    },
+    {
+        kw: "stock",
+        responses: ["Oh, you came to the right AI thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas."],
+        priority: 90
+    },
 ];
+const keywordResponsesLen = keywordResponses.length;
 
 /*
 

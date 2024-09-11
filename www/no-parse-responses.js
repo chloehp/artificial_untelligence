@@ -1,4 +1,4 @@
-const noParseResponses [
+const noParseResponses = [
     "Sure...",
     "What are you talking abooouut",
     "I don't understand",
@@ -12,6 +12,7 @@ const noParseResponses [
     "Sorry I was looking at my phone and I ignored what you said",
 ];
 
-const nonsenseResponses [
-    ":0", ":I", ":^)", "EeeEEEeeeeEEEEEEEeeeee", "Shrimp! Heaven! Now!"
-]
+const nonsenseResponses = [
+    ":0", ":I", ":^)", "EeeEEEeeeeEEEEEEEeeeee", "Shrimp! Heaven! Now!", "?",
+    "beep boop beebeeep boop booop borp beeb beep borp booop borp boop boop boop beeeeeeeep",
+];

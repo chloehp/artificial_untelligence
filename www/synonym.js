@@ -1,5 +1,9 @@
 const synonyms = [
     {
+        words: [":", ";", "(", ")"],
+        syn: "."
+    },
+    {
         words: ["youre"],
         syn: "you be"
     },
@@ -8,11 +12,11 @@ const synonyms = [
         syn: "i be"
     },
     {
-        words: ["am", "is", "are", "was", "will be", "seem", "seem to be"],
+        words: ["am", "is", "are", "was", "seem", "seem to be"],
         syn: "be"
     },
     {
-        words: ["cant", "cannot"],
+        words: ["cant", "cannot", "didnt", "did not", "should not", "could not"],
         syn: "can not"
     },
     {
@@ -36,7 +40,15 @@ const synonyms = [
         syn: "angry"
     },
     {
-        words: ["mild", "whatever", "middling", "fine"],
+        words: ["great", "amazing"],
+        syn: "good"
+    },
+    {
+        words: ["terrible", "awful", "horrible", "shit"],
+        syn: "bad"
+    },
+    {
+        words: ["mild", "whatever", "middling", "fine", "cool"],
         syn: "neutral"
     },
     {
@@ -48,6 +60,7 @@ const synonyms = [
         syn: "hello"
     },
 ];
+const synonymsLen = synonyms.length;
 
 /*
 
