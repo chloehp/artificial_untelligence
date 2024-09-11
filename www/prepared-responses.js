@@ -3,12 +3,15 @@ const preparedResponses = [
         talk: "what is this",
         responses: [
             "??? What are you?",
-            "Shut up?",
         ]
     },
     {
-        talk: "",
+        talk: "hello",
         responses: []
+    },
+    {
+        talk: "love you",
+        responses: ["Would you still love me if I was a worm?"]
     }
 
 ];
