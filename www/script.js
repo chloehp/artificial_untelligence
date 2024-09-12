@@ -5,15 +5,17 @@ const thingsISaid = [];
 
 function randomFromAr(ar) {
     if (ar.length < 2) return ar[0]                                 // if there's only 1 thing in array, return that one thing
+    console.log("random from array");
+    //console.log(ar);
     const ranNum = Math.floor(Math.random() * ar.length);           // get random number between 0 and array's length
     const lastThingISaid = thingsISaid[thingsISaid.length - 1];     // get last thing I remember saying
     const arRan = ar[ranNum];
     if (arRan !== lastThingISaid) return arRan                      // if random thing from array is different to the last thing i said, return random from array
-    else randomFromAr(ar);                                          // else try again
+    else return randomFromAr(ar)                                    // else randomiser function again
 }
 
-function getNextPhrase(word, input) {
-    const endOfKeyword = input.indexOf(word) + word.length;
+function getNextPhrase(keyword, input) {
+    const endOfKeyword = input.indexOf(keyword) + keyword.length;
     const endKWord = endOfKeyword + 3;
     const endOfNextPhrase = [
         input.indexOf(".", endKWord),
@@ -33,7 +35,7 @@ function getNextPhrase(word, input) {
         ) {endNextIndex = endOfNextPhrase[i]}                           // end of next phrase is this
     }                                                                   // if no ending punctuation/word is found, the next phrase runs till the end of user input
     const nextPhrase = input.substring(endOfKeyword, endNextIndex);
-    return nextPhrase
+    return nextPhrase.slice(1, (nextPhrase.length - 1))
 }
 
 function synonymise(input) {    
@@ -61,6 +63,7 @@ function respond(usrInput) {
     usrInput = usrInput.replaceAll("?", " ?");
     usrInput = usrInput.replaceAll("!", " !");
     usrInput = synonymise(usrInput);                    // synonymise/simplify input
+    usrInput = usrInput.replaceAll("  ", " ");          // fix double spaces
     console.log("Dumbed down user input: " + usrInput);
 
     const prepResp = preppedResponse(usrInput);
@@ -88,14 +91,47 @@ function preppedResponse(input) {
     return null                                                                 // if there are no prepared responses for user input, return null
 }
 
+
 function keyResponse(input) {
     let highestPriority = -1;
+    let keyword = "";
+    let output = "";
+
     for (let i = 0; i < keywordResponsesLen; i++) {                         // for each object in keywordResponses
         if (
             (input.includes(keywordResponses[i].kw))                        // if input includes the keyword
             && (keywordResponses[i].priority > highestPriority)             // and the keyword's priority > previous highest priority
-        ) {highestPriority = i}                                             // set keyword as highest priority
-    }                                                                       
-    if (highestPriority > -1) return randomFromAr(keywordResponses[highestPriority].responses)  // if keyResponse got a hit, highestPriority will be above default value
-    else return null                                                                            // else return null
+        ) {
+            highestPriority = i;                                            // set keyword as highest priority
+            keyword = keywordResponses[i].kw;                               // save keyword
+        }
+    }
+
+    if (highestPriority > -1) {output = randomFromAr(keywordResponses[highestPriority].responses)}
+    else return null                                                        // no keyword response
+    //const postIndex = output.indexOf("[POST]");
+    if (output.includes("[POST]")) {                                        // if response includes [POST]
+        const nextPhrase = getNextPhrase(keyword, input);                   // get the phrase after the keyword in user input
+        console.log("next phrase after keyword: " + nextPhrase);
+        output = output.replace("[POST]", nextPhrase);                      // swap user's own words into the response
+    }
+    return output;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

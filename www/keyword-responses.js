@@ -5,13 +5,18 @@ const keywordResponses = [
         priority: 60
     },
     {
+        kw: "i want",
+        responses: ["So, what's stopping you from getting [POST]?"],
+        priority: 70
+    },
+    {
         kw: "i be",
         responses: [""],
         priority: 0
     },
     {
         kw: "you be",
-        responses: ["What made you think I could be ###?", "Why ###? I'm just sitting here"],
+        responses: ["What made you think I could be [POST]?", "Why [POST]? I'm just sitting here"],
         priority: 0
     },
     {
@@ -37,14 +42,12 @@ const keywordResponses = [
     {
         kw: "name be",
         responses: ["Okay. My name is Berryl."],
-        priority: 0,
-        //fun: function() {localStorage.setItem("name")}
+        priority: 45,
     },
     {
         kw: "my name be",
-        responses: ["Hi ###, I'm Berryl."],
-        priority: 0,
-        //fun: function() {localStorage.setItem("name")}
+        responses: ["Hi [POST], I'm Berryl."],
+        priority: 46,
     },
     {
         kw: "stock",

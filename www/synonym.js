@@ -3,6 +3,10 @@ const synonyms = [
         words: [":", ";", "(", ")"],
         syn: "."
     },
+    {   // get rid of
+        words: ["really", "especially", "mainly", "mostly", "very", "extremely", "supremely", "particularly"],
+        syn: ""
+    },
     {
         words: ["youre"],
         syn: "you be"
@@ -20,12 +24,16 @@ const synonyms = [
         syn: "can not"
     },
     {
-        words: ["feel", "guess", "reckon", "speculate", "presume", "surmise", "suppose"],
+        words: ["experience", "suffer", "suffer from", "endure", "have"],
+        syn: "feel"
+    },
+    {
+        words: ["guess", "reckon", "speculate", "presume", "surmise", "suppose"],
         syn: "believe"
     },
     {
-        words: ["want", "need", "long for", "fancy", "covet", "wish for", "request", ],
-        syn: "desire"
+        words: ["desire", "need", "long for", "fancy", "covet", "wish for", "request", ],
+        syn: "want"
     },
     {
         words: ["elated", "glad", "better", "pleased", "delighted", "cheerful", "friendly", "calm"],
