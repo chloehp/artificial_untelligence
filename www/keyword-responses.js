@@ -6,22 +6,32 @@ const keywordResponses = [
     },
     {
         kw: "i want",
-        responses: ["So, what's stopping you from getting [POST]?"],
+        responses: ["So, what's stopping you from getting [POST]?", "Yeah I could probably get [POST] for you, after all, I am the most high tech computer website, I'm like the matrix"],
         priority: 70
     },
     {
         kw: "i be",
-        responses: [""],
-        priority: 0
+        responses: ["What makes you [POST]?"],
+        priority: 50
     },
     {
         kw: "you be",
-        responses: ["What made you think I could be [POST]?", "Why [POST]? I'm just sitting here"],
-        priority: 0
+        responses: ["What made you think I could be [POST]?", "Why [POST]? I'm just sitting here", "Thanks! Or, fuck you! I can't really compute what it means to be [POST]..."],
+        priority: 50
+    },
+    {
+        kw: "i be happy",
+        responses: [""],
+        priority: 60
+    },
+    {
+        kw: "i be sad",
+        responses: [""],
+        priority: 60
     },
     {
         kw: "i be angry",
-        responses: ["eek! Angry why???"],
+        responses: ["eek! Angry why???", "Did I make you mad with my mind melting algorithms?"],
         priority: 60
     },
     {
@@ -30,9 +40,39 @@ const keywordResponses = [
         priority: 60
     },
     {
+        kw: "i be good",
+        responses: [""],
+        priority: 60
+    },
+    {
+        kw: "you be good",
+        responses: [""],
+        priority: 60
+    },
+    {
+        kw: "i be bad",
+        responses: [""],
+        priority: 60
+    },
+    {
+        kw: "you be bad",
+        responses: [""],
+        priority: 60
+    },
+    {
+        kw: "i be neutral",
+        responses: [""],
+        priority: 60
+    },
+    {
+        kw: "you be neutral",
+        responses: [""],
+        priority: 60
+    },
+    {
         kw: "hello",
-        responses: ["Hi"],        
-        priority: 20
+        responses: ["Hi", "Hi, what can I not help you with today?", "Hello, /YOU ARE IMPRESSED WITH MY SUPERIOR COMPUTICITY/", "Good [INSERT TIME OF DAY], my algorithms are crazy like out of this world..."],        
+        priority: 15
     },
     {
         kw: "love you",
@@ -51,7 +91,7 @@ const keywordResponses = [
     },
     {
         kw: "stock",
-        responses: ["Oh, you came to the right AI thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas."],
+        responses: ["Oh, you came to the right computer thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas."],
         priority: 90
     },
 ];

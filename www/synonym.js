@@ -16,17 +16,17 @@ const synonyms = [
         syn: "i be"
     },
     {
-        words: ["am", "is", "are", "was", "seem", "seem to be"],
+        words: ["am", "is", "are", "was", "seem", "seem to be", "experience", "suffer", "suffer from", "endure", "have", "feel"],
         syn: "be"
     },
     {
         words: ["cant", "cannot", "didnt", "did not", "should not", "could not"],
         syn: "can not"
     },
-    {
-        words: ["experience", "suffer", "suffer from", "endure", "have"],
-        syn: "feel"
-    },
+    //{
+    //    words: ["experience", "suffer", "suffer from", "endure", "have"],
+    //    syn: "feel"
+    //},
     {
         words: ["guess", "reckon", "speculate", "presume", "surmise", "suppose"],
         syn: "believe"
@@ -64,8 +64,12 @@ const synonyms = [
         syn: "sorry"
     },
     {
-        words: ["hi", "good morning", "good afternoon", "good evening", "bonjour"],
+        words: ["hi", "good morning", "good afternoon", "good evening", "bonjour", "what be up"],
         syn: "hello"
+    },
+    {
+       words: ["write", "write me", ],
+       syn: "create"
     },
 ];
 const synonymsLen = synonyms.length;

@@ -1,5 +1,5 @@
 
-
+const input = document.getElementById("user-input");
 const thingsUsrSaid = [];
 const thingsISaid = [];
 
@@ -16,16 +16,16 @@ function randomFromAr(ar) {
 
 function getNextPhrase(keyword, input) {
     const endOfKeyword = input.indexOf(keyword) + keyword.length;
-    const endKWord = endOfKeyword + 3;
     const endOfNextPhrase = [
-        input.indexOf(".", endKWord),
-        input.indexOf(",", endKWord),
-        input.indexOf("?", endKWord),
-        input.indexOf("and", endKWord),
-        input.indexOf("or", endKWord),
-        input.indexOf("but", endKWord),
-        input.indexOf("because", endKWord),
-        //input.indexOf("", endKWord)
+        input.indexOf(".", endOfKeyword),
+        input.indexOf(",", endOfKeyword),
+        input.indexOf("?", endOfKeyword),
+        input.indexOf("and", endOfKeyword),
+        input.indexOf("or", endOfKeyword),
+        input.indexOf("for", endOfKeyword),
+        input.indexOf("but", endOfKeyword),
+        input.indexOf("because", endOfKeyword),
+        //input.indexOf("", endOfKeyword)
     ];
     let endNextIndex = input.length;
     for (let i = 0; i < endOfNextPhrase.length; i++) {
@@ -49,7 +49,8 @@ function synonymise(input) {
     return input                                                                    // return synonymised, simplified user input
 }
 
-function respond(usrInput) {
+function respond(usrInput = input.value) {
+    input.value = "";
     thingsUsrSaid.push(usrInput);
     usrInput = " " + usrInput + " "
     usrInput = usrInput.toLowerCase();                  // make all lowercase
@@ -76,6 +77,7 @@ function respond(usrInput) {
         else {response = randomFromAr(nonsenseResponses)}
     }
     thingsISaid.push(response);
+    console.log("response: " + response);
     return response
 }
 
