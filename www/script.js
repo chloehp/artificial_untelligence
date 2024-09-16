@@ -20,22 +20,22 @@ function getNextPhrase(keyword, input) {
         input.indexOf(".", endOfKeyword),
         input.indexOf(",", endOfKeyword),
         input.indexOf("?", endOfKeyword),
-        input.indexOf("and", endOfKeyword),
-        input.indexOf("or", endOfKeyword),
-        input.indexOf("for", endOfKeyword),
-        input.indexOf("but", endOfKeyword),
-        input.indexOf("because", endOfKeyword),
+        input.indexOf(" and ", endOfKeyword),
+        input.indexOf(" or ", endOfKeyword),
+        input.indexOf(" for ", endOfKeyword),
+        input.indexOf(" but ", endOfKeyword),
+        input.indexOf(" because ", endOfKeyword),
         //input.indexOf("", endOfKeyword)
     ];
     let endNextIndex = input.length;
     for (let i = 0; i < endOfNextPhrase.length; i++) {
         if (
-            (endOfNextPhrase[i] > 0)                                    // ending punctuation/word has been found
+            (endOfNextPhrase[i] > -1)                                   // ending punctuation/word has been found
             && (endOfNextPhrase[i] < endNextIndex)                      //
-        ) {endNextIndex = endOfNextPhrase[i]}                           // end of next phrase is this
+        ) {endNextIndex = endOfNextPhrase[i] + 1}                       // end of next phrase is this
     }                                                                   // if no ending punctuation/word is found, the next phrase runs till the end of user input
     const nextPhrase = input.substring(endOfKeyword, endNextIndex);
-    return nextPhrase.slice(1, (nextPhrase.length - 1))
+    return nextPhrase.slice(1, nextPhrase.length - 1)
 }
 
 function synonymise(input) {    
@@ -67,31 +67,31 @@ function respond(usrInput = input.value) {
     usrInput = usrInput.replaceAll("  ", " ");          // fix double spaces
     console.log("Dumbed down user input: " + usrInput);
 
-    const prepResp = preppedResponse(usrInput);
+    //const prepResp = preppedResponse(usrInput);
     let response = "";
-    if (prepResp) {response = prepResp}                 // if preppedResponse is not null, return preppedResponse
-    else {        
+    //if (prepResp) {response = prepResp}                 // if preppedResponse is not null, return preppedResponse
+    //else {        
         const keyResp = keyResponse(usrInput);
         if (keyResp) {response = keyResp}               // else if keyResponse is not null, return keyResponse
         else if (usrInput.length > 9) {response = randomFromAr(noParseResponses)}
         else {response = randomFromAr(nonsenseResponses)}
-    }
+    //}
     thingsISaid.push(response);
     console.log("response: " + response);
     return response
 }
 
-function preppedResponse(input) {
-    const inputAr = input.split(/[.,:;?!]/);                                    // split input into seperate sentences
-    for (let i = 0; i < inputAr.length; i++) {                                  // for each 'sentence' (broken up by any of .,:;?!)
-        const responseIndex = preparedResponsesInput.indexOf(inputAr[i]);       // search for and get index of prepared response (pre-written response)
-        if (responseIndex > -1) {                                               // check if [i] prepared responses exist
-            console.log("returning prepared reponse for: " + preparedResponses[responseIndex].input);
-            return randomFromAr(preparedResponses[responseIndex].responses)     // return a random prepared response to what the user said
-        }
-    }
-    return null                                                                 // if there are no prepared responses for user input, return null
-}
+//function preppedResponse(input) {
+//    const inputAr = input.split(/[.,:;?!]/);                                    // split input into seperate sentences
+//    for (let i = 0; i < inputAr.length; i++) {                                  // for each 'sentence' (broken up by any of .,:;?!)
+//        const responseIndex = preparedResponsesInput.indexOf(inputAr[i]);       // search for and get index of prepared response (pre-written response)
+//        if (responseIndex > -1) {                                               // check if [i] prepared responses exist
+//            console.log("returning prepared reponse for: " + preparedResponses[responseIndex].input);
+//            return randomFromAr(preparedResponses[responseIndex].responses)     // return a random prepared response to what the user said
+//        }
+//    }
+//    return null                                                                 // if there are no prepared responses for user input, return null
+//}
 
 
 function keyResponse(input) {
@@ -99,19 +99,20 @@ function keyResponse(input) {
     let keyword = "";
     let output = "";
 
-    for (let i = 0; i < keywordResponsesLen; i++) {                         // for each object in keywordResponses
-        if (
-            (input.includes(keywordResponses[i].kw))                        // if input includes the keyword
-            && (keywordResponses[i].priority > highestPriority)             // and the keyword's priority > previous highest priority
-        ) {
-            highestPriority = i;                                            // set keyword as highest priority
-            keyword = keywordResponses[i].kw;                               // save keyword
-        }
+    for (let x = 0; x < keywordResponsesLen; x++) {                         // for each object in keywordResponses        
+        if (keywordResponses[x].priority > highestPriority)                 // if keyword's priority > previous highest priority
+            for (let y = 0; y < keywordResponses[x].kw.length; y++) {       // for each object in kw
+                if (input.includes(keywordResponses[x].kw[y])) {            // if input includes the keyword
+                    highestPriority = x;                                    // set keyword as highest priority
+                    keyword = keywordResponses[x].kw[y];                    // save keyword
+                }
+            }
     }
-
-    if (highestPriority > -1) {output = randomFromAr(keywordResponses[highestPriority].responses)}
+    if (highestPriority > -1) {
+        output = randomFromAr(keywordResponses[highestPriority].responses);
+    }
     else return null                                                        // no keyword response
-    //const postIndex = output.indexOf("[POST]");
+    
     if (output.includes("[POST]")) {                                        // if response includes [POST]
         const nextPhrase = getNextPhrase(keyword, input);                   // get the phrase after the keyword in user input
         console.log("next phrase after keyword: " + nextPhrase);

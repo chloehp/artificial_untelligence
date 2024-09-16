@@ -68,7 +68,7 @@ const synonyms = [
         syn: "hello"
     },
     {
-       words: ["write", "write me", ],
+       words: ["write", "write me", "generate", "make", "make me", "provide", "give me" ],
        syn: "create"
     },
 ];
