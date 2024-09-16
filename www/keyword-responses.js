@@ -112,6 +112,16 @@ const keywordResponses = [
         priority: 78
     },
     {
+        kw: ["create a CV", "create a cover letter"],
+        responses: [""],
+        priority: 78
+    },
+    {
+        kw: ["create a letter"],
+        responses: [""],
+        priority: 48
+    },
+    {
         kw: ["create"],
         responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)"],
         priority: 45
@@ -128,12 +138,12 @@ const keywordResponses = [
     },
     {
         kw: ["how do"],
-        responses: ["[POST] by asking a really clever computer web site (me) how to do that thing, then I give you a really good and well thought out answer and everyone respects me"],
+        responses: ["[POST] by asking a really clever computer web site (me) how to [POST], then I give you a really good and well thought out answer and everyone respects me"],
         priority: 50
     },
     {
-        kw: ["how to do"],
-        responses: ["You can do [POST] by EITHER: Beleiving in yourself OR believing in fairys. I'm sure that clears things up."],
+        kw: ["how to"],
+        responses: ["You can [POST] by EITHER: Beleiving in yourself OR believing in fairys. I'm sure that clears things up."],
         priority: 50
     },
     {
