@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width">
   </head>
   <body>
-    <input type="text" id="user-input" onsubmit="respond()"></input>
-    <button onclick="respond()">INPUT</button>
-    
+    <form onsubmit="respond(); return false">
+      <input type="text" id="w-input"></input>
+      <input type="submit" value="INPUT"></input>
+      <!--<button onclick="respond()">INPUT</button>-->
+    </form>
+    <br>
+    <p id="w-output"></p>
 
     <script  src="./script.js"></script>
     <script  src="./prepared-responses.js"></script>

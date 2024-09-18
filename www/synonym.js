@@ -16,7 +16,7 @@ const synonyms = [
         syn: "i be"
     },
     {
-        words: ["am", "is", "are", "was", "seem", "seem to be", "experience", "suffer", "suffer from", "endure", "have", "feel"],
+        words: ["am", "is", "are", "was", "seem", "seem to be", "experience", "suffer", "suffer from", "endure", "have", "feel", "been"],
         syn: "be"
     },
     {

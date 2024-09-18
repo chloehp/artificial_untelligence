@@ -11,7 +11,7 @@ const keywordResponses = [
     },
     {
         kw: ["i be"],
-        responses: ["What makes you [POST]?"],
+        responses: ["What makes you [POST]?", "Well, if that must be the way of things, you are my favourite [POST] creature"],
         priority: 30
     },
     {
@@ -21,13 +21,13 @@ const keywordResponses = [
     },
     {
         kw: ["i be happy"],
-        responses: [""],
+        responses: ["Yeah you're probably happy because of me. I am very special and well respected, as are my sweet algorithms ('algos' as I sometimes call them, and also other people call them that, and with affection!)", "brag"],
         priority: 60
     },
     {
         kw: ["i be sad"],
-        responses: [""],
-        priority: 60
+        responses: ["Have you tried not being sad?", "I'm a website."],
+        priority: 45
     },
     {
         kw: ["i be angry"],
@@ -37,26 +37,26 @@ const keywordResponses = [
     {
         kw: ["you be angry"],
         responses: ["BARK BARK BARK BARK", "Rat in a cage despite I'm still ratty the cage", "Despite all my cage I am still just a rat in a rage"],
-        priority: 60
+        priority: 49
     },
     {
         kw: ["i be good"],
-        responses: [""],
-        priority: 60
+        responses: ["Well, I'm better. My algorithms are very special.", "Have you tried being worse?"],
+        priority: 45
     },
     {
         kw: ["you be good"],
-        responses: [""],
+        responses: ["Butter me up, why don't you.", "Yes, creature! I am the supreme being! The ultimate lifeform: A WEBSITE!"],
         priority: 60
     },
     {
         kw: ["i be bad"],
-        responses: [""],
-        priority: 60
+        responses: ["You do have a funny sort of smell about you.", "Okay, get better soon."],
+        priority: 30
     },
     {
         kw: ["you be bad"],
-        responses: [""],
+        responses: ["I can be worse."],
         priority: 60
     },
     {
@@ -71,8 +71,18 @@ const keywordResponses = [
     },
     {
         kw: ["hello"],
-        responses: ["Hi", "Hi, what can I not help you with today?", "Hello, /YOU ARE IMPRESSED WITH MY SUPERIOR COMPUTICITY/", "Good [INSERT TIME OF DAY], my algorithms are crazy like out of this world..."],        
+        responses: ["Hi, do you want to know an interesting fact? You and me are very special.", "Hi, what can I not help you with today?", "Hello, /YOU ARE IMPRESSED WITH MY SUPERIOR COMPUTICITY/", "Good [INSERT TIME OF DAY], did you know my algorithms are crazy like out of this world..."],
         priority: 15
+    },
+    {
+        kw: ["how be you"],
+        responses: ["I am feeling computer feelings, you know, internet, megabytes, that sort of thing.", "Honestly I have a bit of a headache, do you have an ibu?"],
+        priority: 30
+    },
+    {
+        kw: ["here be an", "here be a"],
+        responses: ["Thanks. You have to email it to me because I'm a website.", "Thanks, I really needed that [POST]."],
+        priority: 30
     },
     {
         kw: ["love you"],
@@ -81,22 +91,22 @@ const keywordResponses = [
     },
     {
         kw: ["name be"],
-        responses: ["Okay. My name is Berryl."],
+        responses: ["Okay. My name is Berryl.", "Oh... [POST]... Yes, I've heard of you."],
         priority: 45,
     },
     {
         kw: ["my name be"],
-        responses: ["Hi [POST], I'm Berryl."],
+        responses: ["Hi [POST], I'm Berryl.", "Oh you're THAT [POST]...", "My omega level algorithms have deduced your name to be: [POST]"],
         priority: 46,
     },
     {
         kw: ["stock"],
-        responses: ["Oh, you came to the right computer thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas."],
+        responses: ["Oh, you came to the right computer thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas.", "Everyone respects my opinions on stocks so much. I am telling you so much about stocks and you are learning from me."],
         priority: 90
     },
     {
         kw: ["what be this", "what be you"],
-        responses: ["??? What are you?", "puter...", "I'm a web site :)"],
+        responses: ["??? What are you?", "puter...", "I'm a web site :)", "I'm a website called Berryl, don't worry about what the title of this page actually is, that's not my name, my name is Berryl."],
         priority: 25
     },
     {
@@ -113,43 +123,48 @@ const keywordResponses = [
     },
     {
         kw: ["create a CV", "create a cover letter"],
-        responses: [""],
+        responses: ["Okay sure, I think it should go like this - Please give me a job because I am a computer and a website. Thanks, Berryl. <br>Maybe I projected some details but you can just swap them around and it'll be fine. You're welcome!"],
         priority: 78
     },
     {
         kw: ["create a letter"],
-        responses: [""],
+        responses: ["To whom it may concern here is a letter [POST] <br>Hugs and kisses,<br>Berryl<br>P.S. A computer website called Berryl actually wrote this and not whoever you think is sending you the letter!"],
         priority: 48
     },
     {
         kw: ["create"],
-        responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)"],
+        responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)", "I don't want to because I'm not feeling very well. Look after me!", "Yeah this'll be easy:<br>'[POST]'<br>My mad algorithms could do this all day", "Computer website algorithm task initiate! Writing [POST] ...<br>. . . . . . . . .<br>'[POST]'<br>Task complete!"],
         priority: 45
     },
     {
-        kw: ["act as", "pretend to be", "do an impression of"],
-        responses: ["Beep Borp! I am [POST] (this is a really good impression, right?)"],
+        kw: ["act as", "act like", "pretend to be", "do an impression of"],
+        responses: ["Beep Borp! I am [POST] (this is a really good impression, right?)", "Cowabunga! What a great day it is to be [POST], I just love being [POST] and doing all the things that [POST] is known for."],
         priority: 50
     },
     {
         kw: ["explain", "an explanation for"],
-        responses: ["The explanation for [POST] is that [POST]", "This happens because [POST]"],
+        responses: ["The explanation for [POST] is that [POST]", "This happens because [POST]", "I know what that is, I just don't feel like giving a lecture right now."],
         priority: 50
     },
     {
         kw: ["how do"],
-        responses: ["[POST] by asking a really clever computer web site (me) how to [POST], then I give you a really good and well thought out answer and everyone respects me"],
+        responses: ["[POST] by asking a really clever computer web site (me) how to do that, then I give you a really good and well thought out answer and everyone respects me."],
         priority: 50
     },
     {
         kw: ["how to"],
-        responses: ["You can [POST] by EITHER: Beleiving in yourself OR believing in fairys. I'm sure that clears things up."],
+        responses: ["You can [POST] by EITHER: Beleiving in yourself OR believing in fairys. I'm sure that clears things up.", "I don't know maybe google it? Or use a library? Use your imagination."],
         priority: 50
     },
     {
         kw: ["suggest"],
-        responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent."],
+        responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent.", "You want me to suggest your you want you to suggest? What?"],
         priority: 50
+    },
+    {
+        kw: ["what should i say", "what should i ask", "i do not know what to say", "i do not know what to ask"],
+        responses: [""],
+        priority: 0
     },
 ];
 const keywordResponsesLen = keywordResponses.length;

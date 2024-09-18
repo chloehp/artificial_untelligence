@@ -1,5 +1,6 @@
 
-const input = document.getElementById("user-input");
+const wInput = document.getElementById("w-input");
+const wOutput = document.getElementById("w-output");
 const thingsUsrSaid = [];
 const thingsISaid = [];
 
@@ -15,12 +16,13 @@ function randomFromAr(ar) {
 }
 
 function getNextPhrase(keyword, input) {
+
     const endOfKeyword = input.indexOf(keyword) + keyword.length;
     const endOfNextPhrase = [
         input.indexOf(".", endOfKeyword),
         input.indexOf(",", endOfKeyword),
         input.indexOf("?", endOfKeyword),
-        input.indexOf(" and ", endOfKeyword),
+        //input.indexOf(" and ", endOfKeyword),
         input.indexOf(" or ", endOfKeyword),
         input.indexOf(" for ", endOfKeyword),
         input.indexOf(" but ", endOfKeyword),
@@ -34,7 +36,11 @@ function getNextPhrase(keyword, input) {
             && (endOfNextPhrase[i] < endNextIndex)                      //
         ) {endNextIndex = endOfNextPhrase[i] + 1}                       // end of next phrase is this
     }                                                                   // if no ending punctuation/word is found, the next phrase runs till the end of user input
-    const nextPhrase = input.substring(endOfKeyword, endNextIndex);
+    let nextPhrase = input.substring(endOfKeyword, endNextIndex);
+    nextPhrase = nextPhrase.replaceAll(" i ", " you ");
+    nextPhrase = nextPhrase.replaceAll(" me ", " you ");
+    nextPhrase = nextPhrase.replaceAll(" my ", " your ");
+    nextPhrase = nextPhrase.replaceAll(" mine ", " yours ");
     return nextPhrase.slice(1, nextPhrase.length - 1)
 }
 
@@ -49,8 +55,8 @@ function synonymise(input) {
     return input                                                                    // return synonymised, simplified user input
 }
 
-function respond(usrInput = input.value) {
-    input.value = "";
+function respond(usrInput = wInput.value) {
+    wInput.value = "";
     thingsUsrSaid.push(usrInput);
     usrInput = " " + usrInput + " "
     usrInput = usrInput.toLowerCase();                  // make all lowercase
@@ -78,6 +84,7 @@ function respond(usrInput = input.value) {
     //}
     thingsISaid.push(response);
     console.log("response: " + response);
+    wOutput.innerHTML = response;
     return response
 }
 
@@ -114,9 +121,9 @@ function keyResponse(input) {
     else return null                                                        // no keyword response
     
     if (output.includes("[POST]")) {                                        // if response includes [POST]
-        const nextPhrase = getNextPhrase(keyword, input);                   // get the phrase after the keyword in user input
+        let nextPhrase = getNextPhrase(keyword, input);                     // get the phrase after the keyword in user input
         console.log("next phrase after keyword: " + nextPhrase);
-        output = output.replace("[POST]", nextPhrase);                      // swap user's own words into the response
+        output = output.replaceAll("[POST]", nextPhrase);                   // swap user's own words into the response
     }
     return output;
 }

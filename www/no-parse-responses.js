@@ -10,6 +10,12 @@ const noParseResponses = [
     "Are you joking?",
     "???",
     "Sorry I was looking at my phone and I ignored what you said",
+    "Go on...",
+    "My algorithms require elaboration",
+    "Please tell me more",
+    "Yes, I'm listening",
+    "What do YOU think that means?",
+    "Well, how do you suppose I can help with that?"
 ];
 
 const nonsenseResponses = [
