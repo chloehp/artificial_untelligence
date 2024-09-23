@@ -64,12 +64,20 @@ const synonyms = [
         syn: "sorry"
     },
     {
-        words: ["hi", "good morning", "good afternoon", "good evening", "bonjour", "what be up"],
+        words: ["hi", "good morning", "good afternoon", "good evening", "bonjour"],
         syn: "hello"
     },
     {
        words: ["write", "write me", "generate", "make", "make me", "provide", "give me", "come up with"],
        syn: "create"
+    },
+    {
+       words: ["okay", "o . k .", "o . k", "alright"],
+       syn: "ok"
+    },
+    {
+       words: ["imagine"],
+       syn: "think"
     },
 ];
 const synonymsLen = synonyms.length;

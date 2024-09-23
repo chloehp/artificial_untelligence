@@ -3,6 +3,7 @@ const wInput = document.getElementById("w-input");
 const wOutput = document.getElementById("w-output");
 const thingsUsrSaid = [];
 const thingsISaid = [];
+let next = -1;
 
 function randomFromAr(ar) {
     if (ar.length < 2) return ar[0]                                 // if there's only 1 thing in array, return that one thing
@@ -16,7 +17,7 @@ function randomFromAr(ar) {
 }
 
 function getNextPhrase(keyword, input) {
-
+    //if (!keyword) return "that";
     const endOfKeyword = input.indexOf(keyword) + keyword.length;
     const endOfNextPhrase = [
         input.indexOf(".", endOfKeyword),
@@ -41,7 +42,7 @@ function getNextPhrase(keyword, input) {
     nextPhrase = nextPhrase.replaceAll(" me ", " you ");
     nextPhrase = nextPhrase.replaceAll(" my ", " your ");
     nextPhrase = nextPhrase.replaceAll(" mine ", " yours ");
-    return nextPhrase.slice(1, nextPhrase.length - 1)
+    return nextPhrase.slice(1, nextPhrase.length - 1);
 }
 
 function synonymise(input) {    
@@ -52,12 +53,20 @@ function synonymise(input) {
             );
         }
     }
-    return input                                                                    // return synonymised, simplified user input
+    return input;                                                                   // return synonymised, simplified user input
 }
 
-function respond(usrInput = wInput.value) {
+function berryl(usrInput = wInput.value){
     wInput.value = "";
     thingsUsrSaid.push(usrInput);
+    let output = respond(usrInput);
+    output = output.replaceAll(" be it", " it is");
+    thingsISaid.push(output);
+    console.log("response: " + output);
+    wOutput.innerHTML = output;
+}
+
+function respond(usrInput) {
     usrInput = " " + usrInput + " "
     usrInput = usrInput.toLowerCase();                  // make all lowercase
     usrInput = usrInput.replaceAll("'s ", " is ");
@@ -72,40 +81,20 @@ function respond(usrInput = wInput.value) {
     usrInput = synonymise(usrInput);                    // synonymise/simplify input
     usrInput = usrInput.replaceAll("  ", " ");          // fix double spaces
     console.log("Dumbed down user input: " + usrInput);
-
-    //const prepResp = preppedResponse(usrInput);
-    let response = "";
-    //if (prepResp) {response = prepResp}                 // if preppedResponse is not null, return preppedResponse
-    //else {        
-        const keyResp = keyResponse(usrInput);
-        if (keyResp) {response = keyResp}               // else if keyResponse is not null, return keyResponse
-        else if (usrInput.length > 9) {response = randomFromAr(noParseResponses)}
-        else {response = randomFromAr(nonsenseResponses)}
+    //if (next === true) {
+    //    const nextResp = nextResponse(usrInput);
+    //    if (nextResp) return nextResp;
     //}
-    thingsISaid.push(response);
-    console.log("response: " + response);
-    wOutput.innerHTML = response;
-    return response
+    const keyResp = keyResponse(usrInput);
+    if (keyResp) return keyResp;                        // if keyResponse is not null, return keyResponse
+    else if (usrInput.length > 9) return randomFromAr(noParseResponses);
+    else return randomFromAr(nonsenseResponses);
 }
-
-//function preppedResponse(input) {
-//    const inputAr = input.split(/[.,:;?!]/);                                    // split input into seperate sentences
-//    for (let i = 0; i < inputAr.length; i++) {                                  // for each 'sentence' (broken up by any of .,:;?!)
-//        const responseIndex = preparedResponsesInput.indexOf(inputAr[i]);       // search for and get index of prepared response (pre-written response)
-//        if (responseIndex > -1) {                                               // check if [i] prepared responses exist
-//            console.log("returning prepared reponse for: " + preparedResponses[responseIndex].input);
-//            return randomFromAr(preparedResponses[responseIndex].responses)     // return a random prepared response to what the user said
-//        }
-//    }
-//    return null                                                                 // if there are no prepared responses for user input, return null
-//}
-
 
 function keyResponse(input) {
     let highestPriority = -1;
     let keyword = "";
     let output = "";
-
     for (let x = 0; x < keywordResponsesLen; x++) {                         // for each object in keywordResponses        
         if (keywordResponses[x].priority > highestPriority)                 // if keyword's priority > previous highest priority
             for (let y = 0; y < keywordResponses[x].kw.length; y++) {       // for each object in kw
@@ -118,13 +107,18 @@ function keyResponse(input) {
     if (highestPriority > -1) {
         output = randomFromAr(keywordResponses[highestPriority].responses);
     }
-    else return null                                                        // no keyword response
-    
+    else return null;                                                       // no keyword response    
     if (output.includes("[POST]")) {                                        // if response includes [POST]
-        let nextPhrase = getNextPhrase(keyword, input);                     // get the phrase after the keyword in user input
+        const nextPhrase = getNextPhrase(keyword, input);                   // get the phrase after the keyword in user input
         console.log("next phrase after keyword: " + nextPhrase);
         output = output.replaceAll("[POST]", nextPhrase);                   // swap user's own words into the response
     }
+    if (output.includes("[NEXT]")) {                                        // if response includes [NEXT]
+        output = output.replaceAll("[NEXT]", "");                           // remove [NEXT] from string
+        next = 1;                                                        // signifies Berryl can potentially understand next response
+    }
+    else {next = -1}
+    console.log("keyResponse");
     return output;
 }
 

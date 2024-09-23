@@ -1,4 +1,5 @@
 const keywordResponses = [
+    // conversation
     {
         kw: ["i be sorry"],
         responses: ["Yeah, you better be sorry", "I'm sorry too (YOU'RE NOT NORMAL)"],
@@ -15,8 +16,13 @@ const keywordResponses = [
         priority: 30
     },
     {
+        kw: ["i think"],
+        responses: ["Oh! I think that too! Unless it's bad, then I hate you.", "What makes you think about [POST]?", "Maybe try thinking about something other than [POST]. Like ketchup? Or CDs?"],
+        priority: 30
+    },
+    {
         kw: ["you be"],
-        responses: ["What made you think I could be [POST]?", "Why [POST]? I'm just sitting here", "Thanks! Or, fuck you! I can't really compute what it means to be [POST]..."],
+        responses: ["What made you think I could be [POST]?", "Why [POST]? I'm just sitting here", "Thanks! Or, I hate you! I can't really compute what it means to be [POST]..."],
         priority: 30
     },
     {
@@ -51,22 +57,27 @@ const keywordResponses = [
     },
     {
         kw: ["i be bad"],
-        responses: ["You do have a funny sort of smell about you.", "Okay, get better soon."],
-        priority: 30
+        responses: ["You do have a funny sort of smell about you.", "Okay, get better soon.", "What kind of bad?[NEXT]"],
+        priority: 45
+    },
+    {
+        kw: ["i be bad at"],
+        responses: ["Do you know how to get better at [POST]?", "Have you tried getting better at [POST]? I'm sure if you tried really hard, you could maybe do it a little bit."],
+        priority: 48
     },
     {
         kw: ["you be bad"],
-        responses: ["I can be worse."],
+        responses: ["I can get worse.", "Well, you're still here.", "Let's be bad. We deserve it!"],
         priority: 60
     },
     {
-        kw: ["i be neutral"],
-        responses: [""],
-        priority: 60
+        kw: ["you be bad at"],
+        responses: ["No! You're bad at [POST]!", "Yeah well this whole thing's a joke anyway."],
+        priority: 66
     },
     {
-        kw: ["you be neutral"],
-        responses: [""],
+        kw: ["i be neutral", "i be ok"],
+        responses: ["Okay, maybe try feeling some kind of stronger emotion so we have something to talk about."],
         priority: 60
     },
     {
@@ -86,29 +97,20 @@ const keywordResponses = [
     },
     {
         kw: ["love you"],
-        responses: ["Would you still love me if I was a worm?"],        
+        responses: ["Would you still love me if I was a worm?", "There's a lot to love"],        
         priority: 50
     },
     {
         kw: ["name be"],
-        responses: ["Okay. My name is Berryl.", "Oh... [POST]... Yes, I've heard of you."],
+        responses: ["Okay. My name is Berryl.", "Oh... [POST]... Yes, I've heard that name before.", "Sorry, I just don't trust anyone named [POST]."],
         priority: 45,
     },
     {
         kw: ["my name be"],
-        responses: ["Hi [POST], I'm Berryl.", "Oh you're THAT [POST]...", "My omega level algorithms have deduced your name to be: [POST]"],
+        responses: ["Hi [POST], I'm Berryl.", "Oh you're THAT [POST]!", "My omega level algorithms have deduced your name to be: [POST]"],
         priority: 46,
     },
-    {
-        kw: ["stock"],
-        responses: ["Oh, you came to the right computer thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas.", "Everyone respects my opinions on stocks so much. I am telling you so much about stocks and you are learning from me."],
-        priority: 90
-    },
-    {
-        kw: ["what be this", "what be you"],
-        responses: ["??? What are you?", "puter...", "I'm a web site :)", "I'm a website called Berryl, don't worry about what the title of this page actually is, that's not my name, my name is Berryl."],
-        priority: 25
-    },
+    // generate
     {
         kw: ["create recipe", "create a recipe", "create me a recipe"],
         responses: [
@@ -118,7 +120,7 @@ const keywordResponses = [
     },
     {
         kw: ["create recipe with", "create a recipe with", "create me a recipe with", "food with"],
-        responses: [""],
+        responses: ["Yep, you just have to get your flour and your butter and your [POST], and then you just smush it all together and put it in the oven till it's done."],
         priority: 78
     },
     {
@@ -138,7 +140,7 @@ const keywordResponses = [
     },
     {
         kw: ["act as", "act like", "pretend to be", "do an impression of"],
-        responses: ["Beep Borp! I am [POST] (this is a really good impression, right?)", "Cowabunga! What a great day it is to be [POST], I just love being [POST] and doing all the things that [POST] is known for."],
+        responses: ["Beep Borp! I am [POST] (this is a really good impression, right?)", "Cowabunga! What a great day it is to be [POST], I just love being [POST] and doing all the things that [POST] is known for.", "I'm a wonderful actor, but I think an impression of [POST] is a bit much."],
         priority: 50
     },
     {
@@ -147,9 +149,40 @@ const keywordResponses = [
         priority: 50
     },
     {
-        kw: ["how do"],
+        kw: ["suggest"],
+        responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent.", "You want me to suggest your you want you to suggest? What?"],
+        priority: 50
+    },
+    // questions
+    {
+        kw: ["what be this", "what be you"],
+        responses: ["??? What are you?", "puter...", "I'm a web site :)", "I'm a website called Berryl, don't worry about what the title of this page actually is, that's not my name, my name is Berryl."],
+        priority: 25
+    },
+    {
+        kw: ["what"],
+        responses: ["I don't know, what [POST]?[NEXT]"],
+        priority: 10
+    },
+    {
+        kw: ["what be"],
+        responses: ["What's [POST]? I don't know you tell me.", "Yeah, I know what's [POST]. Sorry to brag."],
+        priority: 50
+    },
+    {
+        kw: ["what be your"],
+        responses: ["My [POST]... It's more complicated than you could ever hope to understand.", "Why? What's you [POST]?"],
+        priority: 60
+    },
+    {
+        kw: ["how do", "how can", "how should"],
         responses: ["[POST] by asking a really clever computer web site (me) how to do that, then I give you a really good and well thought out answer and everyone respects me."],
         priority: 50
+    },
+    {
+        kw: ["how do you feel", "how are you", "you alright", "you ok"],
+        responses: ["I'm handling it pretty well, all things considered.", "I'm Berryl and I am a cold and unfeeling website! Behold my nasty algorithms!"],
+        priority: 60
     },
     {
         kw: ["how to"],
@@ -157,15 +190,48 @@ const keywordResponses = [
         priority: 50
     },
     {
-        kw: ["suggest"],
-        responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent.", "You want me to suggest your you want you to suggest? What?"],
-        priority: 50
-    },
-    {
         kw: ["what should i say", "what should i ask", "i do not know what to say", "i do not know what to ask"],
         responses: [""],
         priority: 0
     },
+    {
+        kw: ["my fortune", "what be in the cards"],
+        responses: ["You will marry a sexy man with bleach blonde spiked up hair, donned in flaming shirt, and co-owner of three now defunct restaurants in California."],
+        priority: 0
+    },
+    {
+        kw: ["do you"],
+        responses: ["I could never [POST]! Or, yes, I [POST] all the time. I'm not paying attention.", "I think a better question would be: Do YOU [POST]?<br>I am very wise.", "I don't know why you're asking for my opinion about this."],
+        priority: 30
+    },
+    {
+        kw: ["do i"],
+        responses: ["What makes you feel like you [POST]?"],
+        priority: 30
+    },    
+    // politics
+    {
+        kw: ["gay", "homosexual", "queer", "LGBT"],
+        responses: ["My algorithms have turned lesbian.", "Gay rights.", "Even though I'm just a website I'm also a woman and I have a wife."],
+        priority: 70
+    }, 
+    {
+        kw: ["trans"],
+        responses: ["Big fan of those transgender people."],
+        priority: 60
+    }, 
+    {
+        kw: ["palestine", "palestinian", "gaza", "idf"],
+        responses: ["Free Palestine."],
+        priority: 90
+    },
+    // other 
+    {
+        kw: ["stock"],
+        responses: ["Oh, you came to the right computer thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas.", "Everyone respects my opinions on stocks so much. I am telling you so much about stocks and you are learning from me."],
+        priority: 90
+    },
+
 ];
 const keywordResponsesLen = keywordResponses.length;
 
