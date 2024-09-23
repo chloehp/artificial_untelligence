@@ -57,7 +57,7 @@ const keywordResponses = [
     },
     {
         kw: ["i be bad"],
-        responses: ["You do have a funny sort of smell about you.", "Okay, get better soon.", "What kind of bad?[NEXT]"],
+        responses: ["You do have a funny sort of smell about you.", "Okay, get better soon.", "What kind of bad?[NEXT]0[NEXT]"],
         priority: 45
     },
     {
@@ -161,7 +161,7 @@ const keywordResponses = [
     },
     {
         kw: ["what"],
-        responses: ["I don't know, what [POST]?[NEXT]"],
+        responses: ["I don't know, what [POST]?[NEXT]1[NEXT]"],
         priority: 10
     },
     {

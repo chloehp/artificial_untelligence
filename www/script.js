@@ -81,10 +81,10 @@ function respond(usrInput) {
     usrInput = synonymise(usrInput);                    // synonymise/simplify input
     usrInput = usrInput.replaceAll("  ", " ");          // fix double spaces
     console.log("Dumbed down user input: " + usrInput);
-    //if (next === true) {
-    //    const nextResp = nextResponse(usrInput);
-    //    if (nextResp) return nextResp;
-    //}
+    if (next > -1) {
+        const nextResp = nextResponse(usrInput);
+        if (nextResp) return nextResp;
+    }
     const keyResp = keyResponse(usrInput);
     if (keyResp) return keyResp;                        // if keyResponse is not null, return keyResponse
     else if (usrInput.length > 9) return randomFromAr(noParseResponses);
@@ -107,22 +107,52 @@ function keyResponse(input) {
     if (highestPriority > -1) {
         output = randomFromAr(keywordResponses[highestPriority].responses);
     }
-    else return null;                                                       // no keyword response    
+    else return null;    
     if (output.includes("[POST]")) {                                        // if response includes [POST]
         const nextPhrase = getNextPhrase(keyword, input);                   // get the phrase after the keyword in user input
-        console.log("next phrase after keyword: " + nextPhrase);
         output = output.replaceAll("[POST]", nextPhrase);                   // swap user's own words into the response
-    }
-    if (output.includes("[NEXT]")) {                                        // if response includes [NEXT]
-        output = output.replaceAll("[NEXT]", "");                           // remove [NEXT] from string
-        next = 1;                                                        // signifies Berryl can potentially understand next response
-    }
-    else {next = -1}
+    }     
     console.log("keyResponse");
-    return output;
+    return stringSpecials(output);
 }
 
+function nextResponse(input) {
+    let keyword = "";
+    let output = "";
+    for (let x = 0; x < nextResponsesLen; x++) {                                            // 
+        if (next === nextResponses[x].code) {                                               // find code in array for next response
+            for (let y = 0; y < nextResponses[x].ans.length; y++) {                         // each possible answer
+                const kw = nextResponses[x].ans[y].kw;                                //
+                for (let z = 0; z < kw.length; z++) {                                 // each possible keyword
+                    if (input.includes(kw[z])) {                                      // if input includes this keyword, the answer has been found, respond to it
+                        const answersResponses = nextResponses[x].ans[y].responses;      
+                        keyword = kw[z];
+                        output = randomFromAr(answersResponses);
+                        break;                                                              // break out of loop
+                    }
+                }
+            }
+            //break;
+        }
+    }
+    if (output === "") return null;  
+    if (output.includes("[POST]")) {                              
+        const nextPhrase = getNextPhrase(keyword, input);        
+        output = output.replaceAll("[POST]", nextPhrase);         
+    }
+    console.log("nextResponse: " + next);
+    return stringSpecials(output);
+}
 
+function stringSpecials(str) {
+    if (str.includes("[NEXT]")) {                                           // if response includes [NEXT]
+        const outAr = str.split("[NEXT]");
+        str = outAr[0];
+        next = JSON.parse(outAr[1]);                                                    // signifies Berryl can potentially understand next response, and what to respond with
+    }
+    else {next = -1}
+    return str;
+}
 
 
 

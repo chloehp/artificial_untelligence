@@ -56,6 +56,10 @@ const synonyms = [
         syn: "bad"
     },
     {
+        words: ["cruel", "evil", "vindicative"],
+        syn: "mean"
+    },
+    {
         words: ["mild", "whatever", "middling", "fine", "cool"],
         syn: "neutral"
     },
