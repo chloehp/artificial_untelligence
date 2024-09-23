@@ -1,6 +1,6 @@
 const nextResponses = [
     {
-        code: 0,        
+        code: "0",        
         ans: [
             {
                 kw: ["mean"],
@@ -11,6 +11,24 @@ const nextResponses = [
                 responses: [""]
             },
         ]
-    }
+    },
+    {
+        code: "1",        
+        ans: [
+            {
+                kw: ["that be enough", "no more"],
+                responses: ["Sorry for party responding.[NEXT]1-1[NEXT]"]
+            },
+        ]
+    },
+    {
+        code: "1-1",        
+        ans: [
+            {
+                kw: ["eep"],
+                responses: ["This is a function test put in by the developer, how did you find this?!" ]
+            },
+        ]
+    },
 ];
 const nextResponsesLen = nextResponses.length;

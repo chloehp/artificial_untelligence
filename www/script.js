@@ -3,7 +3,7 @@ const wInput = document.getElementById("w-input");
 const wOutput = document.getElementById("w-output");
 const thingsUsrSaid = [];
 const thingsISaid = [];
-let next = -1;
+let next = null;
 
 function randomFromAr(ar) {
     if (ar.length < 2) return ar[0]                                 // if there's only 1 thing in array, return that one thing
@@ -81,7 +81,7 @@ function respond(usrInput) {
     usrInput = synonymise(usrInput);                    // synonymise/simplify input
     usrInput = usrInput.replaceAll("  ", " ");          // fix double spaces
     console.log("Dumbed down user input: " + usrInput);
-    if (next > -1) {
+    if (next) {
         const nextResp = nextResponse(usrInput);
         if (nextResp) return nextResp;
     }
@@ -148,9 +148,9 @@ function stringSpecials(str) {
     if (str.includes("[NEXT]")) {                                           // if response includes [NEXT]
         const outAr = str.split("[NEXT]");
         str = outAr[0];
-        next = JSON.parse(outAr[1]);                                                    // signifies Berryl can potentially understand next response, and what to respond with
+        next = outAr[1];                                                    // signifies Berryl can potentially understand next response, and what to respond with
     }
-    else {next = -1}
+    else {next = null}
     return str;
 }
 

@@ -1,6 +1,11 @@
 const keywordResponses = [
     // conversation
     {
+        kw: ["respond to this"],
+        responses: ["Okay! Respond respond respond![NEXT]1[NEXT]"],
+        priority: 6
+    },
+    {
         kw: ["i be sorry"],
         responses: ["Yeah, you better be sorry", "I'm sorry too (YOU'RE NOT NORMAL)"],
         priority: 60
@@ -161,7 +166,7 @@ const keywordResponses = [
     },
     {
         kw: ["what"],
-        responses: ["I don't know, what [POST]?[NEXT]1[NEXT]"],
+        responses: ["I don't know, what [POST]?"],
         priority: 10
     },
     {
