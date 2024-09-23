@@ -124,11 +124,11 @@ function nextResponse(input) {
             for (let y = 0; y < nextResponses[x].ans.length; y++) {                         // each possible answer
                 const kw = nextResponses[x].ans[y].kw;                                //
                 for (let z = 0; z < kw.length; z++) {                                 // each possible keyword
-                    if (input.includes(kw[z])) {                                      // if input includes this keyword, the answer has been found, respond to it
+                    if (kw[z] === "%anything%" || input.includes(kw[z])) {            // if input includes this keyword, the answer has been found, respond to it
                         const answersResponses = nextResponses[x].ans[y].responses;      
                         keyword = kw[z];
                         output = randomFromAr(answersResponses);
-                        break;                                                              // break out of loop
+                        break;                                                        // break out of loop
                     }
                 }
             }

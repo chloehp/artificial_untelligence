@@ -60,7 +60,7 @@ const synonyms = [
         syn: "mean"
     },
     {
-        words: ["mild", "whatever", "middling", "fine", "cool"],
+        words: ["mild", "whatever", "middling", "fine", "cool", "eh", "meh"],
         syn: "neutral"
     },
     {
@@ -76,7 +76,7 @@ const synonyms = [
        syn: "create"
     },
     {
-       words: ["okay", "o . k .", "o . k", "alright"],
+       words: ["okay", "o . k .", "o . k", "alright", "sure"],
        syn: "ok"
     },
     {

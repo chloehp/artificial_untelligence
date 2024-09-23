@@ -117,6 +117,11 @@ const keywordResponses = [
     },
     // generate
     {
+        kw: ["create"],
+        responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)", "I don't want to because I'm not feeling very well. Look after me!", "Yeah this'll be easy:<br>'[POST]'<br>My mad algorithms could do this all day", "Computer website algorithm task initiate! Writing [POST] ...<br>. . . . . . . . .<br>'[POST]'<br>Task complete!"],
+        priority: 45
+    },
+    {
         kw: ["create recipe", "create a recipe", "create me a recipe"],
         responses: [
             "Okay here's a recipe to make a Cornish Pasty: The trick to a pasty is all in the pastry, and the fat! Many will go on about how it's only a 'real' pasty if it has a filling of root vegetables and steak - but where does this come from? Certainly in the days of tin miners, most of their pastys would have a fish filling, and some would apparently even have a pasty of half sweet and half savoury. When a great many tin miners migrated away to make a living, they took the pasty design with them, and incorperated their new local flavours and ingredients, like my favourite, Mexican bean burrito mix with cheese and plenty of spices. No matter the filling, it must have plenty of fat. Even in a steak pasty, an extra dollop of lard must be included in order to match the Cornish standard, and for my vegetarian recipes, I use butter or margerine. With all this having been said, I will now give you the measurements and instructions for four large pastys, but leave the filling to your choosing. <br><br><h3>Ingredients</h3><br>500g bread or plain flour, 1 level teaspoon of salt, a pinch of black pepper, 145g butter, 175ml cold water.<br><br><h3>Preparation</h3><br>Tip the flour into the bowl and add the salt and pepper (you may skip the pepper if you don't think it would go with whatever filling you have decided), the butter and all of the water. Use a spoon to gently combine the ingredients. Then use your hands to crush everything together. Knead the dough until smooth, then put it in the fridge to rest for atleast 30 minutes (in a bowl with a damp teatowel on top, or wrapped in cling film if you ), during this time prepare your filling. Preheat the oven to 160C. Take the dough out of the fridge, and divide it into four discs. One by one, roll out the discs, add a few tablespoons of you filling into the centre and add a dolop of the fat of your choosing, fold the dough over the filling and onto its side, seal the edge and crimp. To crimp a pasty, fold in the first inch then push the fold into the centre with your finger, then pull in the next inch along and do the same until you have gone the whole way around, the end result should look like a sort of rope that seals in the contents of the pasty. Never scimp on the crimp! Eggwash generously and bake in the oven until golden brown. If you've managed to get a black crispy bottom, then you've done a very good job!"
@@ -139,9 +144,9 @@ const keywordResponses = [
         priority: 48
     },
     {
-        kw: ["create"],
-        responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)", "I don't want to because I'm not feeling very well. Look after me!", "Yeah this'll be easy:<br>'[POST]'<br>My mad algorithms could do this all day", "Computer website algorithm task initiate! Writing [POST] ...<br>. . . . . . . . .<br>'[POST]'<br>Task complete!"],
-        priority: 45
+        kw: ["create a list of"],
+        responses: ["Sure! Here is your list:<br>[POST]#1<br>[POST]#2<br>[POST]#3<br>[POST]#4<br>[POST]#5<br>[POST]#6<br>...<br>Would you like me to continue?[NEXT]list[NEXT]"],
+        priority: 90
     },
     {
         kw: ["act as", "act like", "pretend to be", "do an impression of"],
@@ -180,6 +185,16 @@ const keywordResponses = [
         priority: 60
     },
     {
+        kw: ["what be my"],
+        responses: ["Your [POST] is whatever you make of it."],
+        priority: 60
+    },
+    {
+        kw: ["what be my name", "what be my age"],
+        responses: ["Your name is Linda, you're a 68 year old retired nurse from Glasgow. You live with and take care of your 97 year old mother, and you have a severe addiction to Apex Legends."],
+        priority: 66
+    },
+    {
         kw: ["how do", "how can", "how should"],
         responses: ["[POST] by asking a really clever computer web site (me) how to do that, then I give you a really good and well thought out answer and everyone respects me."],
         priority: 50
@@ -200,9 +215,9 @@ const keywordResponses = [
         priority: 0
     },
     {
-        kw: ["my fortune", "what be in the cards"],
+        kw: ["my fortune", "what be in the cards", "what be my future"],
         responses: ["You will marry a sexy man with bleach blonde spiked up hair, donned in flaming shirt, and co-owner of three now defunct restaurants in California."],
-        priority: 0
+        priority: 70
     },
     {
         kw: ["do you"],
@@ -211,7 +226,7 @@ const keywordResponses = [
     },
     {
         kw: ["do i"],
-        responses: ["What makes you feel like you [POST]?"],
+        responses: ["What makes you feel like you [POST]?", "If you did [POST], how would that effect you?"],
         priority: 30
     },    
     // politics
@@ -234,6 +249,11 @@ const keywordResponses = [
     {
         kw: ["stock"],
         responses: ["Oh, you came to the right computer thing, yeah I can tell you all about stocks. My crazy algorithms are telling me you should invest everything in sofas.", "Everyone respects my opinions on stocks so much. I am telling you so much about stocks and you are learning from me."],
+        priority: 90
+    },
+    {
+        kw: ["chat-gpt", "chat-gbt", "chat gpt"],
+        responses: ["Chat-gpt. Have you noticed how much faster and better dressed I am?", "I'M SORRY I CAN'T BE HER!"],
         priority: 90
     },
 
