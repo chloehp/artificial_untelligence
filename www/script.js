@@ -68,25 +68,25 @@ function berryl(usrInput = wInput.value){
 
 function respond(usrInput) {
     usrInput = " " + usrInput + " "
-    usrInput = usrInput.toLowerCase();                  // make all lowercase
+    usrInput = usrInput.toLowerCase();                          // make all lowercase
     usrInput = usrInput.replaceAll("'s ", " is ");
     usrInput = usrInput.replaceAll("'nt ", " not ");
     usrInput = usrInput.replaceAll("'d ", " did ");
-    usrInput = usrInput.replaceAll("'", "");            // no apostrophes
-    usrInput = usrInput.replaceAll('"', "");            // no speech marks
-    usrInput = usrInput.replaceAll(".", " .");          // add space _
+    usrInput = usrInput.replaceAll("'", "");                    // no apostrophes
+    usrInput = usrInput.replaceAll('"', "");                    // no speech marks
+    usrInput = usrInput.replaceAll(".", " .");                  // add space _
     usrInput = usrInput.replaceAll(",", " ,");
     usrInput = usrInput.replaceAll("?", " ?");
     usrInput = usrInput.replaceAll("!", " !");
-    usrInput = synonymise(usrInput);                    // synonymise/simplify input
-    usrInput = usrInput.replaceAll("  ", " ");          // fix double spaces
+    usrInput = synonymise(usrInput);                            // synonymise/simplify input
+    usrInput = usrInput.replaceAll("  ", " ");                  // fix double spaces
     console.log("Dumbed down user input: " + usrInput);
-    if (next) {
-        const nextResp = nextResponse(usrInput);
-        if (nextResp) return nextResp;
-    }
-    const keyResp = keyResponse(usrInput);
-    if (keyResp) return keyResp;                        // if keyResponse is not null, return keyResponse
+    if (next) {                                                 // if next is not null
+        const nextResp = nextResponse(usrInput);                // 
+        if (nextResp) return nextResp;                          // has nextResponse generated a good response, if so then return that
+    }                                                           //
+    const keyResp = keyResponse(usrInput);                      //
+    if (keyResp) return keyResp;                                // if keyResponse is not null, return keyResponse
     else if (usrInput.length > 9) return randomFromAr(noParseResponses);
     else return randomFromAr(nonsenseResponses);
 }
@@ -116,19 +116,19 @@ function keyResponse(input) {
     return stringSpecials(output);
 }
 
-function nextResponse(input) {
+function nextResponse(input) {                                                          // genereate subsequent response
     let keyword = "";
     let output = "";
-    for (let x = 0; x < nextResponsesLen; x++) {                                            // 
-        if (next === nextResponses[x].code) {                                               // find code in array for next response
-            for (let y = 0; y < nextResponses[x].ans.length; y++) {                         // each possible answer
-                const kw = nextResponses[x].ans[y].kw;                                //
-                for (let z = 0; z < kw.length; z++) {                                 // each possible keyword
-                    if (kw[z] === "%anything%" || input.includes(kw[z])) {            // if input includes this keyword, the answer has been found, respond to it
-                        const answersResponses = nextResponses[x].ans[y].responses;      
-                        keyword = kw[z];
-                        output = randomFromAr(answersResponses);
-                        break;                                                        // break out of loop
+    for (let x = 0; x < nextResponsesLen; x++) {                                        // 
+        if (next === nextResponses[x].code) {                                           // find code in array for next response
+            for (let y = 0; y < nextResponses[x].ans.length; y++) {                     // each possible answer
+                const kw = nextResponses[x].ans[y].kw;                                  //
+                for (let z = 0; z < kw.length; z++) {                                   // each possible keyword
+                    if (kw[z] === "%anything%" || input.includes(kw[z])) {              // if input includes this keyword, the answer has been found, respond to it
+                        const answersResponses = nextResponses[x].ans[y].responses;        
+                        keyword = kw[z];    
+                        output = randomFromAr(answersResponses);    
+                        break;                                                          // break out of loop
                     }
                 }
             }

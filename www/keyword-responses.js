@@ -160,7 +160,7 @@ const keywordResponses = [
     },
     {
         kw: ["suggest"],
-        responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent.", "You want me to suggest your you want you to suggest? What?"],
+        responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent.[NEXT]det[NEXT]", "You want me to suggest your you want you to suggest? What?"],
         priority: 50
     },
     // questions

@@ -43,6 +43,15 @@ const nextResponses = [
             },
         ]
     },
+    {
+        code: "det",
+        ans: [
+            {
+                kw: ["detergent", "laundry", "what ?"],
+                responses: ["I don't really have anything to suggest, I don't wear clothes."]
+            },
+        ]
+    },
 
 ];
 const nextResponsesLen = nextResponses.length;
