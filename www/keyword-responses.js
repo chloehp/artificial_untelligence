@@ -256,6 +256,11 @@ const keywordResponses = [
         responses: ["Chat-gpt. Have you noticed how much faster and better dressed I am?", "I'M SORRY I CAN'T BE HER!"],
         priority: 90
     },
+    {
+        kw: ["low tide"],
+        responses: ["LOW TIDE<br>MOON'S SO BRIGHT<br>MOVING MY HIPS FROM LEFT TO RIGHT<br>MY MY<br>CHECK MY PHONE<br>FEEL IT IN MY BELLY WHEN I'M DRIVING HOME!<br><br><br>Me and the boys in the hotel lobby!"],
+        priority: 0
+    },
 
 ];
 const keywordResponsesLen = keywordResponses.length;
