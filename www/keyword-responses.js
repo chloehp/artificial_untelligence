@@ -17,7 +17,7 @@ const keywordResponses = [
     },
     {
         kw: ["i be"],
-        responses: ["What makes you [POST]?", "Well, if that must be the way of things, you are my favourite [POST] creature"],
+        responses: ["What makes you [POST]?[NEXT]2[NEXT]", "Well, if that must be the way of things, you are my favourite [POST] creature."],
         priority: 30
     },
     {
@@ -115,10 +115,20 @@ const keywordResponses = [
         responses: ["Hi [POST], I'm Berryl.", "Oh you're THAT [POST]!", "My omega level algorithms have deduced your name to be: [POST]"],
         priority: 46,
     },
+    {
+        kw: ["i do not know"],
+        responses: ["Maybe you should sit and have a think about it.", "That's okay, most people don't."],
+        priority: 45,
+    },
+    {
+        kw: ["bye", "goodbye", "see you later", "talk to you later"],
+        responses: ["Okay bye![NEXT]bye[NEXT]", "Sure, talk to you later![NEXT]bye[NEXT]", "Goodbye![NEXT]bye[NEXT]"],
+        priority: 99,
+    },
     // generate
     {
         kw: ["create"],
-        responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)", "I don't want to because I'm not feeling very well. Look after me!", "Yeah this'll be easy:<br>'[POST]'<br>My mad algorithms could do this all day", "Computer website algorithm task initiate! Writing [POST] ...<br>. . . . . . . . .<br>'[POST]'<br>Task complete!"],
+        responses: ["'[POST]' Done. I am very talented :^)", "'[POST]' :)", "I don't want to because I'm not feeling very well. Look after me!", "Yeah this'll be easy:<br>'[POST]'<br>My mad algorithms could do this all day", "Computer website algorithm task initiate! Writing [POST] ...<br>. . . . . . . . .<br>'[POST]'<br>Task complete!", "I don't have to do what you tell me!", "First, you should try making [POST].", "[POST]."],
         priority: 45
     },
     {

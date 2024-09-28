@@ -16,7 +16,7 @@ const nextResponses = [
         code: "1",        
         ans: [
             {
-                kw: ["that be enough", "no more"],
+                kw: ["that be enough", "no more", "stop .", "please stop"],
                 responses: ["Sorry for party responding.[NEXT]1-1[NEXT]"]
             },
         ]
@@ -27,6 +27,19 @@ const nextResponses = [
             {
                 kw: ["eep"],
                 responses: ["This is a function test put in by the developer, how did you find this?!" ]
+            },
+        ]
+    },
+    {
+        code: "2",
+        ans: [
+            {
+                kw: ["think"],
+                responses: ["Thinking was your first mistake. It doesn't become you.", "Think less, I think."]
+            },
+            {
+                kw: ["because", "i just"],
+                responses: ["Well then, no further questions, that's a very reasonable explanation."]
             },
         ]
     },
@@ -49,6 +62,19 @@ const nextResponses = [
             {
                 kw: ["detergent", "laundry", "what ?"],
                 responses: ["I don't really have anything to suggest, I don't wear clothes."]
+            },
+        ]
+    },
+    {
+        code: "bye",
+        ans: [
+            {
+                kw: [" "],
+                responses: ["Oh. You're still here?", "Sorry I'm confused I thought you were going."]
+            },
+            {
+                kw: ["bye"],
+                responses: ["Yeah... Byeeee!", "Okay? Bye?"]
             },
         ]
     },
