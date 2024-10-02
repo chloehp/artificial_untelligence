@@ -163,6 +163,16 @@ const keywordResponses = [
         responses: ["I suggest you give me a big kiss on my computer cheek", "I suggest you invest in some better laundry detergent.[NEXT]det[NEXT]", "You want me to suggest your you want you to suggest? What?"],
         priority: 50
     },
+    {
+        kw: ["give you money", "take my money", "£", "$", "€", "here be money"],
+        responses: ["For me? Nice! Just shove it into the CD drive in your computer.[NEXT]cd[NEXT]", "Cash only please and thank you! Just shove it into your CD drive.[NEXT]cd[NEXT]"],
+        priority: 95
+    },
+    {
+        kw: ["yes"],
+        responses: ["How can you be sure?"],
+        priority: 5
+    },
     // questions
     {
         kw: ["what be this", "what be you"],
@@ -181,7 +191,7 @@ const keywordResponses = [
     },
     {
         kw: ["what be your"],
-        responses: ["My [POST]... It's more complicated than you could ever hope to understand.", "Why? What's you [POST]?"],
+        responses: ["My [POST]... It's more complicated than you could ever hope to understand.", "Why? What's your [POST]?[NEXT]info[NEXT]"],
         priority: 60
     },
     {
@@ -198,6 +208,11 @@ const keywordResponses = [
         kw: ["how do", "how can", "how should"],
         responses: ["[POST] by asking a really clever computer web site (me) how to do that, then I give you a really good and well thought out answer and everyone respects me."],
         priority: 50
+    },
+    {
+        kw: ["how do you", "how can you", "how should you"],
+        responses: ["I don't know, how do YOU [POST].[NEXT]howyou[NEXT]", "Oh, well, you've found a premium feature! For instructions on how to [POST], you've got to give me some money. Also I only take cash, just push it into the CD drive.[NEXT]cd[NEXT]"],
+        priority: 55
     },
     {
         kw: ["how do you feel", "how are you", "you alright", "you ok"],

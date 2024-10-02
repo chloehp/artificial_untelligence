@@ -4,7 +4,7 @@ const synonyms = [
         syn: "."
     },
     {   // get rid of
-        words: ["really", "especially", "mainly", "mostly", "very", "extremely", "supremely", "particularly"],
+        words: ["really", "especially", "mainly", "mostly", "very", "extremely", "supremely", "particularly", "some", "lots of", "loads of", "a bit of"],
         syn: ""
     },
     {

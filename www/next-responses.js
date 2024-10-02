@@ -52,6 +52,41 @@ const nextResponses = [
             },
         ]
     },
+    {
+        code: "howyou",
+        ans: [
+            {
+                kw: ["can", "do"],
+                responses: ["Oh, well you've got it all figured out then."]
+            },
+        ]
+    },
+    {
+        code: "cd",
+        ans: [
+            {
+                kw: ["do not", "can not"],
+                responses: ["You don't have any kind of CD player in this computer? What is the world coming to! How are you supposed burn cool mixes?", "Well, I don't think it would fit in the USB hole. Maybe you should get a CD drive, then shove some money in there."]
+            },
+            {
+                kw: ["here", "ok", "done", "sure"],
+                responses: ["Thanks! I'm going to use this to buy myself a fancy handbag.", "Thank you! Before you ask, yes this is how bitcoin works.", "BRRRKKKK. This is the sound of your CD drive munching up your notes."]
+            },
+            {
+                kw: ["no"],
+                responses: ["Guess I'll stay poor this month.", "Ak! You've foiled my dastardly plan.", "Okay :("]
+            },
+        ]
+    },
+    {
+        code: "info",
+        ans: [
+            {
+                kw: ["%anything%"],
+                responses: ["That's nice. I'm going to sell your personal information on the dark web now.", "Why would you tell me that? We're basically strangers."]
+            },
+        ]
+    },
 
 ];
 const nextResponsesLen = nextResponses.length;
@@ -64,7 +99,7 @@ const nextResponsesLen = nextResponses.length;
     ans: [
         {
             kw: [""],
-            responses: ["" ]
+            responses: [""]
         },
     ]
 },
